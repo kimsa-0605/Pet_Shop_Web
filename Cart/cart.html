@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            max-width: 1200px;
+            margin:auto;
+        }
+        .product-items{
+            display:flex;
+            justify-content:space-around ;
+            background-color: white;
+            padding:12px;
+        }
+        .product-item{
+            width:19%;
+            background-color: white;
+            padding:12px;
+        }
+        .product-item img{
+            width:100%;
+            margin-bottom: 20px;
+        }
+        .product-item-text{
+            display:flex;
+            justify-content: space-between;
+        }
+        .product-item button{
+            margin-top: 12px;
+            height:30px;
+            padding:0 12px;
+            cursor:pointer;
+            border:none;
+            border:5px;
+        }
+        .product-item button:hover{
+            background-color: tomato;;
+        }
+
+        .cart-icon{
+            display: flex;
+            align-items: center; /* Giúp căn giữa icon theo chiều dọc */
+            height: 50px; /* Bạn có thể thay đổi giá trị này */
+            margin-bottom: 20px; /* Tạo khoảng trống bên dưới nếu cần */
+}
+    </style>
+</head>
+<body onload='indexLoadPage()'>
+    <div class="container">
+        <div class="products">
+            <div class="cart-icon">
+                <a href="/Trang chủ/header.html">
+                    <i class='fas fa-cart-arrow-down' style="color: tomato; font-size: 24px;"></i>
+                </a>
+                <span class="total" id="total">0</span> sản phẩm
+            </div>
+            <div class="product-items" id="products"></div> <!-- Cập nhật ID cho danh sách sản phẩm -->
+        </div>
+    </div>
+      <!-- JavaScript để xử lý giỏ hàng -->
+      <script>
+            const products = [
+                {
+                id: 1,
+                name: 'New Balance 237 Classic',
+                image: 'https://m.media-amazon.com/images/I/61MQ8oX8J7L._AC_SX679_.jpg',
+                price: '3,400,000'
+                },
+                {
+                id: 2,
+                name: 'New Balance Nb Fw 327',
+                image: 'https://img-va.myshopline.com/image/store/1679367631642/4-7a2ae236-0e7a-41cb-9d81-55c18a549895_990x.jpg?w=1000&h=1000',
+                price: '2,500,000'
+                },
+                {
+                id: 3,
+                name: 'New Balance Roav Fresh',
+                image: 'https://i.etsystatic.com/12941154/r/il/b836b0/1384412355/il_1588xN.1384412355_5ueg.jpg',
+                price: '1,600,000'
+                },
+                {
+                id: 4,
+                name: 'New Balance 200 Lifestyle',
+                image: 'https://cdn.shopify.com/s/files/1/0456/5070/6581/products/SMF200N1-1_540x.jpg?v=1678435029',
+                price: '470,000'
+                }
+            ];
+
+            let productInCart = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : [];
+            
+            function saveToLocalStorage () {
+                localStorage.setItem('products', JSON.stringify(productInCart));
+            }
+            
+            //Index page
+            function renderProducts () {
+                let data = ``;
+                products.map(value => {
+                data += `
+                    <div class='col-3'>
+                    <div class='card'>
+                        <img src='${value.image}' class='card-img-top ' alt=''>
+                        <div class='card-body'>
+                        <h5 class='card-title'>${value.name}</h5>
+                        <p class='card-text'>${value.price}</p>
+                        <button onclick='addToCart(${value.id})' class='btn btn-primary'>Add to cart</button>
+                        </div>
+                    </div>
+                    </div>
+                `;
+                });
+                document.getElementById('products').innerHTML = data;
+            }
+            //Thêm sản phẩm vào giỏ hàng
+            function addToCart (id) {
+
+                let checkProduct = productInCart.some(value => value.id === id);//Trả về true or false
+            
+                if (!checkProduct) {
+                let product = products.find(value => value.id === id);
+                productInCart.unshift({
+                    ...product,
+                    quantity: 1
+                });
+                saveToLocalStorage();
+                calculatorTotal();
+                showCartItem(); // Gọi hàm hiển thị giỏ hàng
+                } else {
+                // Khi thao tác với localeStorge thì lấy vị trí(index) của sản phẩm đó trong localStorage hay là trong giỏ hàng  (bởi vì khi lưu không theo thứ tự nào cả về id. Muốn sản phẩm nào thì lưu sản phẩm đó)
+                let product = productInCart.find(value => value.id === id);
+                //Lấy ra sản phẩm
+                let getIndex = productInCart.findIndex(value => value.id === id);
+                productInCart[getIndex] = {
+                    ...product,
+                    quantity: ++product.quantity
+                };
+                saveToLocalStorage();
+                showCartItem(); // Gọi hàm hiển thị giỏ hàng
+                }
+            }
+            //số lượng sản phẩm thêm vào
+            function calculatorTotal () {
+                document.getElementById('total').innerHTML = productInCart.length;
+            }
+            
+            function indexLoadPage () {
+                renderProducts();
+                calculatorTotal();
+            }
+
+    </script>
+</body>
+</html>
+

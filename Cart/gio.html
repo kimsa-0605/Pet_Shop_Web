@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="script.js"></script>
+    <style>
+         /* Start cart */
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 3004px;
+            background-color: #f5f5f5;
+        }
+
+        tr{
+            font-size: 20px; 
+            margin-bottom: 10px;
+        } 
+        tr td{
+            margin-right: 10px;
+        } 
+        
+        
+          
+
+        .cart-container {
+            width: 1440px;
+            height: 3004px;
+            background-color: white;
+            padding: 40px;
+   
+        }
+
+        .cart-header {
+            display: flex;
+            width:100%;
+            /* justify-content: space-between; */
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        .cart-header p:hover{
+            color:#FA9B25;
+            
+        }
+        .cart-header p{
+            padding:5px;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .cart-table th {
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+
+        .cart-table th {
+            background-color: #FBA81F;
+            font-weight: normal; /* Loại bỏ chữ in đậm */
+        }
+
+     
+      
+       
+       
+
+        button {
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color:#FBA81F;
+            font-size: 24px;
+        }
+
+        /* .clear-cart {
+            font-size: 24px;
+        } */
+
+        .cart-table img {
+            width: 100px;
+        }
+   
+
+        .product-name img {
+            width: 80px; /* Kích thước của hình ảnh */
+            height: auto; /* Giữ tỷ lệ hình ảnh */
+            margin-right: 10px; /* Khoảng cách giữa hình ảnh và tên sản phẩm */
+        }
+
+        .cart-table th, .cart-table td {
+            padding: 12px; /* Khoảng cách giữa các ô */
+            text-align: center; /* Căn giữa nội dung trong ô */
+            border: 1px solid #ddd;
+        }
+
+        .cart-table img {
+            width: 100px; /* Kích thước hình ảnh trong bảng */
+        }
+        .btn-remove{
+            font-size: 24px;
+        }
+
+        .cart-summary {
+           display:grid;
+           grid-template-columns: 70% 30%;
+        }
+        .table-total {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+
+        }
+
+        .table-total th,
+        .table-total td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .table-total th {
+            background-color: #f2f2f2;
+             font-weight: normal; /* Đặt trọng số chữ thành bình thường */
+        }
+        .order{
+            margin-top: 10px;
+        }
+        .order button {
+            width:100%;
+
+        }
+
+
+        .order {
+            background-color: #FBA81F; 
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            /* cursor: pointer; */
+            width: 100%; /* Đặt chiều rộng bằng 100% */
+            text-align: center;
+        }
+      
+      /* end cart */
+       
+        
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <div class="cart-header">
+                <p>Home Page
+                    <a href="/Shopping Cart/cart.html"></a>
+                </p>
+                <p>></p>
+                <p>My cart</p>
+           
+        </div>
+
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Dynamic items will be added here -->
+            </tbody>
+        </table>
+        <div class="cart-summary">
+            <div class="continues">
+                <button class="continue-button">Continue<a href="./gio_hang.html"></a></button>
+            </div>
+            
+            <div class="cart-total">
+                <table class="table-total">
+                    <thead>
+                        <tr>
+                            <th>Total Price</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="total-price">$0</td>
+                            <td id="total-quantity">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="order">Order</button>
+            </div>
+           
+         
+        </div>
+        
+     
+        <!-- end cart -->
+    <script>
+
+function showCartItem() {
+            let productInCart = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : [];
+            
+            let HTML = '';
+            let totalPrice = 0;
+            let totalQuantity = 0;
+
+            if (productInCart .length === 0) {
+                // Hiển thị thông điệp khi giỏ hàng trống
+                HTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; font-size: 18px; padding: 20px;">
+                            No products available. <a href="/shop.html">Return to store</a> to continue shopping.
+                        </td>
+                    </tr>`;
+            } else {
+                // Tạo HTML cho các mặt hàng trong giỏ hàng.
+                productInCart.forEach(value => {
+                    let itemTotal = parseFloat(value.price.replace(/,/g, '')) * value.quantity; // Loại bỏ dấu phẩy và chuyển thành số
+
+
+                    HTML += `
+                        <tr>
+                            <td class="product-name">
+                                <img src="${value.image}" alt="${value.name}" />
+                                <span>${value.name}</span>
+                            </td>
+                            <td>${value.price.toLocaleString()}$</td>
+                            <td>
+                                <button onclick="decreaseQuantity(${value.id})">-</button>
+                                ${value.quantity}
+                                <button onclick="increaseQuantity(${value.id})">+</button>
+                            </td>
+                            <td>${itemTotal.toLocaleString()}$</td>
+                            <td>
+                                <i class="far fa-trash-alt btn-remove" onclick="removeProduct(${value.id})"></i>
+                            </td>
+                        </tr>`;
+                    totalPrice += itemTotal;
+                    totalQuantity += value.quantity; // Sửa từ item.quantity thành value.quantity
+
+                });
+            }
+
+            document.getElementById('cart-items').innerHTML = HTML;
+            document.getElementById('total-price').textContent = totalPrice.toLocaleString() + '$';
+            document.getElementById('total-quantity').textContent = totalQuantity;
+        }
+
+
+
+
+ 
+  
+        // Tăng giảm số lượng sẽ thay đổi tổng
+
+        function increaseQuantity(id) {
+            let productInCart = JSON.parse(localStorage.getItem('products')) || [];
+            productInCart = productInCart.map(item => {
+                if (item.id === id) {
+                    item.quantity += 1;
+                }
+                return item;
+            });
+            localStorage.setItem('products', JSON.stringify(productInCart));
+            showCartItem(); // Cập nhật lại giỏ hàng hiển thị
+        }
+
+        function decreaseQuantity(id) {
+            let productInCart = JSON.parse(localStorage.getItem('products')) || [];
+            productInCart =productInCart.map(item => {
+                if (item.id === id && item.quantity > 1) { // Đảm bảo số lượng không giảm dưới 1
+                    item.quantity -= 1;
+                }
+                return item;
+            });
+            localStorage.setItem('products', JSON.stringify(productInCart));
+            showCartItem(); // Cập nhật lại giỏ hàng hiển thị
+        }
+
+        // Delete cart
+        function removeProduct(id) {
+            let productInCart = JSON.parse(localStorage.getItem('products')) || [];
+            productInCart = productInCart.filter(item => item.id !== id); // Loại bỏ sản phẩm khỏi giỏ hàng
+            localStorage.setItem('products', JSON.stringify(productInCart)); // Cập nhật lại localStorage
+            showCartItem(); // Cập nhật lại giỏ hàng hiển thị
+        }
+ 
+        showCartItem(); // Gọi hàm để hiển thị giỏ hàng khi trang được tải
+    </script>    
+</body>
+</html>
