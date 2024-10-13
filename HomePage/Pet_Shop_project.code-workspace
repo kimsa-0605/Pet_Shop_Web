@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../JAVASRIPT_MR.DINH"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Pet_Shop_project"
+	}
+}
