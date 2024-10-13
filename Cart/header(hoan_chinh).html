@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web_Basic</title>
+    <link rel="stylesheet" href="./Header.css">
+    <link rel="stylesheet " href="./Footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+
+            * {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+            }
+
+            /* Css for header */
+            /* Head1 */
+            body {
+                display: flex;
+                justify-content: center;
+                font-family: 'Poppins', sans-serif; /* Đảm bảo font được sử dụng chính xác */
+            }
+
+            .app {
+                display: flex;
+                justify-content: center;
+                width: 1440px;
+                background-image: url('./Hero (1).png'); /* Đảm bảo đường dẫn đúng */
+                margin-bottom: 20px;
+            }
+
+            .hero {
+                position: relative;
+                background-position: center;
+                height: 594px;
+                width: 1080px;
+            }
+
+            .head_1 {
+                display: flex;
+                justify-content: space-between;
+                padding: 24px 0;
+            }
+
+            .header_1-left, .header_1-right {
+                display: flex;
+                gap: 24px;
+            }
+
+            .header_content {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+            }
+
+            /* Head2 */
+            .head_2 {
+                display: flex;
+                justify-content: space-between; 
+                align-items: center; 
+                padding: 14px 40px; 
+                background-color: #f8f8f8; 
+                border-radius: 40px;
+            }
+
+            .shop-logo {
+                display: flex;
+                align-items: center;
+            }
+
+            .shop-logo img {
+                max-height: 50px; 
+                margin-right: 10px; 
+            }
+
+            .shop-logo p {
+                font-weight: bold;
+                font-size: 20px;
+                margin-left: 8px;
+            }
+
+            .menu {
+                flex-grow: 1; 
+                text-align: center; 
+            }
+
+            .list-menu {
+                list-style: none;
+                padding: 0; 
+                margin: 0; 
+                display: flex; 
+                justify-content: center; 
+            }
+
+            .list-menu li {
+                margin: 0 15px; 
+                cursor: pointer; 
+                position: relative;
+                font-size: 20px;
+                font-family: 'Poppins', sans-serif; 
+            }
+
+            .list-menu li:hover {
+                color: #F87537;
+            }
+
+            .list-menu li::after {
+                content: ''; 
+                position: absolute;
+                bottom: -5px; 
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: #F87537;
+                opacity: 0; 
+                transition: opacity 0.3s; 
+            }
+
+            .list-menu li:hover::after {
+                opacity: 1; 
+            }
+
+            .input-head {
+                display: flex;
+                align-items: center; 
+            }
+
+            .input-head_search {
+                position: relative; 
+                margin-right: 20px; 
+            }
+
+            .input-head_search input {
+                padding: 10px;
+                border: 1px solid #ccc; 
+                border-radius: 20px; 
+                width: 200px;
+                border: none;
+                outline: none;
+            }
+
+            .input-head_search i {
+                position: absolute; 
+                right: 10px; 
+                top: 50%; 
+                transform: translateY(-50%); 
+                background-color: black; 
+                color: white;
+                border-radius: 50%; 
+                padding: 8px; 
+            }
+
+            .input-head i {
+                margin-left: 20px; 
+                cursor: pointer; 
+            }
+
+            /* hero_content */
+            .hero_content {
+                display: flex; 
+                align-items: center; 
+                justify-content: space-between; 
+                max-width: 1200px; 
+                margin: auto;
+                margin-top: 174px;
+            }
+
+            .hero_content-left {
+                flex: 1; 
+                max-width: 600px;
+                margin-top: -116px;
+            }
+
+            .hero_content-left h5 {
+                font-size: 16px;
+                font-weight: bold;
+                color: #FD7E14;
+            }
+
+            .hero_content-left h2 {
+                font-size: 40px;
+                margin: 10px 0;
+                color: #333; 
+                font-weight: bold;
+            }
+
+            .hero_content-left p {
+                font-size: 14px; 
+                color: #444; 
+                line-height: 1.5;
+                font-family: 'Poppins', sans-serif; /* Sử dụng font chính cho đoạn văn */
+            }
+
+            .hero_content-right {
+                flex: 1;
+                display: flex; 
+                justify-content: center; 
+            }
+
+            .hero_content-right img {
+                max-width: 100%; /* Giữ đúng tỷ lệ */
+                height: auto; 
+                object-fit: contain; /* Đảm bảo hình ảnh không bị kéo dãn */
+            }
+
+            /* Add more */
+            i {
+                font-size: 20px;
+            }
+
+            .fa-paw {
+                font-size: 30px;
+            }
+
+
+
+            /* Start footer */
+        .footer {
+            position: relative;
+            width: 1440px;
+            height: 417px;
+            background-color: #FFF0D9;
+            display: grid;
+            grid-template-rows: 260px 97px ;
+            row-gap: 60px;
+        }
+
+        .footer .dauchan {
+            position: absolute;
+            width: 620.3px;
+            height: 368.5px;
+            padding: 8.94px 0px 39.56px 171.75px ;
+        }
+
+        .footer .tron {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            width: 139px;
+        }
+
+        .footer .logo {
+            width: 127.27px;
+            height: 30px;
+        }
+
+        .footer .inforU {
+            width: 1296px;
+            height: 188px;
+            display: grid;
+            grid-template-columns: 349px 82px 111px 150px 173px;
+            column-gap: 109px;
+            padding: 72px 72px 0px 72px;
+        }
+        .footer .infor {
+            display:grid;
+            grid-template-rows: 100px 24px;
+            row-gap: 20px;
+
+        }
+        .footer .infor > .text{
+            margin: 0px;
+            font-size: 16px;
+        }
+
+        .footer .text{
+            padding-top: 20px;
+            margin: 0px;
+        }
+
+        .footer .icon-contact {
+            display: flex;
+            gap: 20px;
+            padding-top: 20px;
+        }
+        .footer .icon-contact > .icon {
+            font-size:24px;
+        }
+
+        .footer .title{
+            font-size: 16px;
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            
+        }
+        .footer .title > .text:first-child{
+            padding-top: 20px;
+        }
+
+        .footer .title > .text{
+            padding-top: 16px;
+        }
+
+        .footer .store {
+            font-size: 16px;
+        }
+
+        .footer .store > p {
+            margin: 0px;
+        }
+
+        .footer .store > .br {
+            margin-top: 16px;
+        }
+
+
+        .footer .inforD {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr ;
+            column-gap: 196px;
+        }
+
+        .footer .text-inforD{
+            margin: 0px;
+            font-size: 14px;
+            padding: 15px 0px 0px 312px;
+        }
+
+        .footer .icon-pay{
+            margin: 0px;
+            font-size: 24px;
+            padding: 0px 312px 0px 0px ;
+        }
+
+        .footer .icon-pay {
+            display: flex;
+            gap: 30px;
+        }
+        .footer .icon-pay > .icon {
+            font-size: 30px;
+        }
+        /* End footer */
+
+
+
+        /* Start cart */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 3004px;
+            background-color: #f5f5f5;
+        }
+
+        tr{
+            font-size: 20px; 
+            margin-bottom: 10px;
+        } 
+        tr td{
+            margin-right: 10px;
+        } 
+        
+        
+          
+
+        .cart-container {
+            width: 1440px;
+            height: 3004px;
+            background-color: white;
+            padding: 40px;
+   
+        }
+
+        .cart-header {
+            display: flex;
+            width:100%;
+            /* justify-content: space-between; */
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        .cart-header p:hover{
+            color:#FA9B25;
+            
+        }
+        .cart-header p{
+            padding:5px;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .cart-table th {
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+
+        .cart-table th {
+            background-color: #FBA81F;
+            font-weight: normal; /* Loại bỏ chữ in đậm */
+        }
+
+     
+      
+       
+       
+
+        button {
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color:#FBA81F;
+            font-size: 24px;
+        }
+
+        /* .clear-cart {
+            font-size: 24px;
+        } */
+
+        .cart-table img {
+            width: 100px;
+        }
+   
+
+        .product-name img {
+            width: 80px; /* Kích thước của hình ảnh */
+            height: auto; /* Giữ tỷ lệ hình ảnh */
+            margin-right: 10px; /* Khoảng cách giữa hình ảnh và tên sản phẩm */
+        }
+
+        .cart-table th, .cart-table td {
+            padding: 12px; /* Khoảng cách giữa các ô */
+            text-align: center; /* Căn giữa nội dung trong ô */
+            border: 1px solid #ddd;
+        }
+
+        .cart-table img {
+            width: 100px; /* Kích thước hình ảnh trong bảng */
+        }
+        .btn-remove{
+            font-size: 24px;
+        }
+
+        .cart-summary {
+           display:grid;
+           grid-template-columns: 70% 30%;
+        }
+        .table-total {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+
+        }
+
+        .table-total th,
+        .table-total td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .table-total th {
+            background-color: #f2f2f2;
+             font-weight: normal; /* Đặt trọng số chữ thành bình thường */
+        }
+        .order{
+            margin-top: 10px;
+        }
+        .order button {
+            width:100%;
+
+        }
+
+
+        .order {
+            background-color: #FBA81F; 
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            /* cursor: pointer; */
+            width: 100%; /* Đặt chiều rộng bằng 100% */
+            text-align: center;
+        }
+      
+      /* end cart */
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="app">
+            <!-- start header -->
+            <div class="hero">
+                <div class="head_1">
+                    <div class="header_1-left">
+                        <div class="header_1-left-telephone header_content">
+                            <i class="fa-solid fa-phone"></i>
+                            <p>+379 871-8371</p>
+                        </div>
+                        <div class="header_1-left-email header_content">
+                            <i class="fa-regular fa-envelope"></i>
+                            <p>rgarton@outlook.com</p>
+                        </div>
+                    </div>
+                    <div class="header_1-right">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>8592 Fairground St. Tallahassee, FL 32303</p>
+                    </div>
+                </div>
+                <div class="head_2">
+                    <div class="shop-logo">
+                        <i class="fa-solid fa-paw"></i>
+                        <p>Pet Shop</p>
+                    </div>
+                    <div class="menu">
+                        <ul class="list-menu">
+                            <li>Trang Chủ</li>
+                            <li>Thời Trang</li>
+                            <li>Đồ Ăn</li>
+                        </ul>
+                    </div>
+                    <div class="input-head">
+                        <div class="input-head_search">
+                            <input type="text" placeholder="Search Products...">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <i class="fa-regular fa-user"></i>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                </div>
+                <div class="hero_content">
+                    <div class="hero_content-left">
+                        <h5>Pet Shop</h5>
+                        <h2>The friendly and 
+                            caring small pet store
+                        </h2>
+                        <p>At et vehicula sodales est proin turpis pellentesque sinulla a aliquam amet rhoncus quisque eget sit</p>
+                    </div>
+                    <div class="hero_content-right">
+                        <img src="./Frame 421.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- end header -->
+    
+        </div>
+        <!-- start cart -->
+
+        <div class="cart-header">
+            <!-- <button  class="go-home">
+                <a href="./cart.html">
+                <i class="fas fa-angle-left return"></i></a>
+            </button> -->
+                <p>Home Page
+                    <a href="/Shopping Cart/cart.html"></a>
+                </p>
+                <p>></p>
+                <p>My cart</p>
+           
+            <!-- <button class="clear-cart"><i class="far fa-trash-alt delete_1"></i></button> -->
+        </div>
+
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Dynamic items will be added here -->
+            </tbody>
+        </table>
+        <div class="cart-summary">
+            <div class="continues">
+                <button class="continue-button">Continue<a href="./gio_hang.html"></a></button>
+            </div>
+            
+            <div class="cart-total">
+                <table class="table-total">
+                    <thead>
+                        <tr>
+                            <th>Total Price</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="total-price">$0</td>
+                            <td id="total-quantity">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="order">Order</button>
+            </div>
+           
+         
+        </div>
+        
+     
+        <!-- end cart -->
+        
+            <!-- start footer  -->
+            <div class="footer">
+                <img class="dauchan" src="./dauchan.png" alt="">
+                <img class="tron" src="./nuatron2.png" alt="">
+                <div class="inforU">
+                    <div class="infor">
+                        <div class="subInfor">
+                            <img src="./Logo (2).png" class="logo">
+                            <p class="text">Sed viverra eget fames sit varius. <br>
+                                Pellentesque mattis libero viverra dictumst <br>
+                                ornaresed justo convallis vitae
+                            </p>
+                        </div>
+                        <div class="icon-contact">
+                            <i class="icon fa-brands fa-square-facebook"></i>
+                            <i class="icon fa-brands fa-square-instagram"></i>
+                            <i class="icon fa-brands fa-square-x-twitter"></i>
+                            <i class="icon fa-brands fa-square-youtube"></i>
+                        </div>
+                    </div>
+                    <ul class="title"><b>Company</b>
+                        <li class="text">About Us</li>
+                        <li class="text">Blog</li>
+                        <li class="text">Gift</li>
+                        <li class="text">Careers</li>
+                    </ul>
+                    <ul class="title"><b>Useful Links</b>
+                        <li class="text">New products</li>
+                        <li class="text">Best sellers</li>
+                        <li class="text">Discount</li>
+                        <li class="text">F.A.Q</li>
+                    </ul>
+                    <ul class="title"><b>Customer Service</b>
+                        <li class="text">Contact Us</li>
+                        <li class="text">Shipping</li>
+                        <li class="text">Returns</li>
+                        <li class="text">Order tracking</li>
+                    </ul>
+                    <div class="store"><b>Store</b>
+                        <p class="br">8592 Fairground St.</p>
+                        <p>Tallahassee, FL 32303</p>
+                        <p class="br">+775 378-6348</p>
+                        <p>rgarton@outlook.com</p>
+                    </div>
+                </div>
+                <div class="inforD">
+                    <p class="text-inforD"> © Copyright Pet Shop 2024. Design by Figma. guru</p>
+                    <div class="icon-pay">
+                        <i class="icon fa-brands fa-cc-visa"></i>
+                        <i class="icon fa-brands fa-cc-mastercard"></i>
+                        <i class="icon fa-brands fa-cc-paypal"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- end footer -->
+
+    </div>
+
+    <script>
+
+        function showCartItem() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            let HTML = '';
+            let totalPrice = 0;
+            let totalQuantity = 0;
+
+            if (cart.length === 0) {
+                // Hiển thị thông điệp khi giỏ hàng trống
+                HTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; font-size: 18px; padding: 20px;">
+                            No products available. <a href="/shop.html">Return to store</a> to continue shopping.
+                        </td>
+                    </tr>`;
+            } else {
+                // Tạo HTML cho các mặt hàng trong giỏ hàng.
+                cart.forEach(item => {
+                    let itemTotal = item.price * item.quantity;
+
+                    HTML += `
+                        <tr>
+                            <td class="product-name">
+                                <img src="${item.image}" alt="${item.name}" />
+                                <span>${item.name}</span>
+                            </td>
+                            <td>${item.price.toLocaleString()}$</td>
+                            <td>
+                                <button onclick="decreaseQuantity(${item.id})">-</button>
+                                ${item.quantity}
+                                <button onclick="increaseQuantity(${item.id})">+</button>
+                            </td>
+                            <td>${itemTotal.toLocaleString()}$</td>
+                            <td>
+                                <i class="far fa-trash-alt btn-remove" onclick="removeProduct(${item.id})"></i>
+                            </td>
+                        </tr>`;
+                    totalPrice += itemTotal;
+                    totalQuantity += item.quantity;
+                });
+            }
+
+            document.getElementById('cart-items').innerHTML = HTML;
+            document.getElementById('total-price').textContent = totalPrice.toLocaleString() + '$';
+            document.getElementById('total-quantity').textContent = totalQuantity;
+        }
+
+
+
+
+ 
+  
+        // Tăng giảm số lượng sẽ thay đổi tổng
+
+        function increaseQuantity(id) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.map(item => {
+                if (item.id === id) {
+                    item.quantity += 1;
+                }
+                return item;
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            showCartItem(); // Cập nhật lại giỏ hàng hiển thị
+        }
+
+        function decreaseQuantity(id) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.map(item => {
+                if (item.id === id && item.quantity > 1) { // Đảm bảo số lượng không giảm dưới 1
+                    item.quantity -= 1;
+                }
+                return item;
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            showCartItem(); // Cập nhật lại giỏ hàng hiển thị
+        }
+
+        // Delete cart
+        function removeProduct(id) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.id !== id); // Loại bỏ sản phẩm khỏi giỏ hàng
+            localStorage.setItem('cart', JSON.stringify(cart)); // Cập nhật lại localStorage
+            showCartItem(); // Cập nhật lại giỏ hàng hiển thị
+        }
+ 
+        showCartItem(); // Gọi hàm để hiển thị giỏ hàng khi trang được tải
+    </script>    
+   
+</body>
+</html>
