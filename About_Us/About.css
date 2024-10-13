@@ -203,6 +203,7 @@ body {
     width: 627px;
     max-width: 100%;  /*Giữ đúng tỷ lệ */
     height: 285px; 
+    padding-top: 8px;
     object-fit: contain; /* Đảm bảo hình ảnh không bị kéo dãn */
 }
 
